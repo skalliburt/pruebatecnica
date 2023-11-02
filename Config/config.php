@@ -14,3 +14,10 @@ const DB_CHARSET = "utf8mb4";
 define('CONTROLLER_DEFAULT', 'Login');
 define('METHOD_DEFAULT', 'index');
 define('CONTROLLER_ERROR', 'Error404');
+
+//DIRECTORIOS APP
+define('DS', DIRECTORY_SEPARATOR);
+define('ROOT', dirname(__DIR__));
+define('CONTROLLER', ROOT . DS . 'Controladores');
+define('VIEW', ROOT . DS . "Vistas");
+define('TEMPLATE', VIEW . DS . "Templates");

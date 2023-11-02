@@ -2,8 +2,8 @@
 
 session_start();
 
-require_once 'config/config.php';
-require_once 'helper/helper.php';
+require_once 'Config/config.php';
+require_once 'Helper/helper.php';
 
 // url proviene de la configuracion de htacces
 $route = !empty($_GET['url']) ? $_GET['url'] : CONTROLLER_DEFAULT."/".METHOD_DEFAULT;
