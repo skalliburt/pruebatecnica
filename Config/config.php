@@ -21,3 +21,4 @@ define('ROOT', dirname(__DIR__));
 define('CONTROLLER', ROOT . DS . 'Controladores');
 define('VIEW', ROOT . DS . "Vistas");
 define('TEMPLATE', VIEW . DS . "Templates");
+define('ASSETS', base_url . 'Librerias');
