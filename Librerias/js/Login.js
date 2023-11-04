@@ -5,7 +5,6 @@ $("#ingresar").click(function(){
     const url = `http://localhost/pruebatecnica/Login/acceso`;
 
     $.ajax({
-
         url: url,
         method: 'POST',
         data: data,
@@ -21,9 +20,7 @@ $("#ingresar").click(function(){
             }else{
                 alert(respuesta.error);
             }
-            
-            
-            
+             
         }
     });
 });
