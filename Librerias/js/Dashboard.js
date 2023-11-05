@@ -189,7 +189,6 @@ $(document).ready(function() {
 
         let actForm = document.querySelector('#actRegistro');
         const data = new FormData(actForm);
-        //console.log(data)
         data.append('DOC_CODIGONU',$("#DOC_CODIGONU").val());
         data.append('DOC_ID',$("#DOC_ID").val());
 
@@ -203,62 +202,16 @@ $(document).ready(function() {
             contentType: false,
             success: function(response) {
                 const respuesta = JSON.parse(response);
-                /* if(respuesta.msg){
-                    //alert(respuesta.msg);
+                console.log(respuesta)
+                if(respuesta.status == true){
+                    alert(respuesta.msg);
                     setTimeout(() => {
                         window.location.href = `http://localhost/pruebatecnica/Dashboard`;
                     }, 1500);
-                }else{
-                    alert(respuesta.error);
-                } */
-                
+                }
             }
         });
 
-
-
-
-        /* var DOC_NOMBRE = $("#DOC_NOMBREACT").val();
-        var DOC_CODIGO = $("#DOC_CODIGONU").val();
-        var DOC_CONTENIDO = $("#DOC_CONTENIDOACT").val();
-        var DOC_ID_TIPO = $("#DOC_ID_TIPOACT").val();
-        var DOC_ID_PROCESO = $("#DOC_ID_PROCESOACT").val();
-
-        console.log(DOC_NOMBRE);
-        console.log(DOC_CODIGO);
-        console.log(DOC_CONTENIDO);
-        console.log(DOC_ID_TIPO);
-        console.log(DOC_ID_PROCESO); */
-
-        /* if (DOC_NOMBRE === "" || DOC_CODIGO === "" || DOC_CONTENIDO === "" || DOC_ID_TIPO === "" || DOC_ID_PROCESO === "") {
-            alert('Por favor complete todos los campos.');
-        } else {
-            const data = {
-                DOC_NOMBRE: DOC_NOMBRE,
-                DOC_CODIGO: DOC_CODIGO,
-                DOC_CONTENIDO: DOC_CONTENIDO,
-                DOC_ID_TIPO: DOC_ID_TIPO,
-                DOC_ID_PROCESO: DOC_ID_PROCESO,
-            }
-
-            const url = `http://localhost/pruebatecnica/Dashboard/registrar`;
-            $.ajax({
-                url: url,
-                method: 'POST',
-                data: data,
-                success: function(response) {
-                    const respuesta = JSON.parse(response);
-                    if(respuesta.status == true){
-                        alert(respuesta.msg);
-                        setTimeout(() => {
-                            window.location.href = `http://localhost/pruebatecnica/Dashboard`;
-                        }, 1500);
-                    }
-                     
-                }
-            });
-            
-        } */
     });
 
 

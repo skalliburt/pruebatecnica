@@ -92,8 +92,33 @@ class Dashboard extends Controlador{
     public function actualizarDocumento(){
         $array = [];
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            print_r($_POST);
+            if(empty($_POST['DOC_ID_TIPOACT'])){
+                $parametros = [
+                    'DOC_NOMBRE' => $_POST['DOC_NOMBREACT'],
+                    'DOC_CONTENIDO' => $_POST['DOC_CONTENIDOACT'],
+                ];
+                $id = [
+                    'DOC_ID' => $_POST['DOC_ID'],
+                ];
+            }else{
+                $parametros = [
+                    'DOC_NOMBRE' => $_POST['DOC_NOMBREACT'],
+                    'DOC_CONTENIDO' => $_POST['DOC_CONTENIDOACT'],
+                    'DOC_CODIGO' => $_POST['DOC_CODIGONU'],
+                    'DOC_ID_TIPO' => $_POST['DOC_ID_TIPOACT'],
+                    'DOC_ID_PROCESO' => $_POST['DOC_ID_PROCESOACT'],
+                ];
+                $id = [
+                    'DOC_ID' => $_POST['DOC_ID'],
+                ];
+                
+            }
+            $actu = DashboardModelo::update('DOC_DOCUMENTO',$parametros,$id);
+            if($actu == 1){
+                $data = ['status' => true, 'msg' => 'Se ha actualizado el registro.']; 
+            }
         }
+        echo json_encode($data,JSON_UNESCAPED_UNICODE);
     }
     
 }
