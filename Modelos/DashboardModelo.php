@@ -26,5 +26,8 @@ class DashboardModelo extends DB{
         return $respuesta;
     }
 
-    
+    public static function buscarDocumento($id){
+        $respuesta = DB::SQL("SELECT * FROM `DOC_DOCUMENTO` WHERE DOC_ID = $id");
+        return $respuesta;
+    }
 }

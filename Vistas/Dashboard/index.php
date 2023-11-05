@@ -65,7 +65,7 @@ headerAdmin($data);
         <div class="card-header">
             <ul class="nav navbar-right">
                 <li>
-                <button class="btn btn-success btn-sm" id="nuevoRegistro"> Nuevo Registro</button>
+                <button class="btn btn-success btn-sm" id="nuevoRegistroBtn"> Nuevo Registro</button>
                 </li>
                 
             </ul>
@@ -95,8 +95,8 @@ headerAdmin($data);
                                 <td><?php echo $datosTabla['DOC_CODIGO']; ?></td>
                                 <td><?php echo $datosTabla['DOC_CONTENIDO']; ?></td>
                                 <td>
-                                    <button class="btn btn-warning btn-sm" id="editarRegistro">Editar</button>
-                                    <button class="btn btn-danger btn-sm" id="eliminarRegistro">Editar</button>
+                                    <button class="btn btn-warning btn-sm editarRegistro" id="editarRegistro">Editar</button>
+                                    <button class="btn btn-danger btn-sm eliminarRegistro" id="eliminarRegistro">Eliminar</button>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -144,6 +144,55 @@ headerAdmin($data);
 
                     <button type="button" class="btn btn-success" id="registrarBtn">Guardar registro</button>
                     <button type="button" class="btn btn-secondary" id="cancelarBtn">Cancelar</button>
+                </form>
+            </div>
+
+            <div id="actualizaRegistro" style="display:none;">
+                <form method="POST" style="" id="actRegistro">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="hidden" id="DOC_ID" value="">
+                            <label>DOC_NOMBRE</label>
+                            <input type="text" class="form-control" id="DOC_NOMBREACT" name="DOC_NOMBREACT" value="">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>DOC_CONTENIDO</label>
+                            <input type="text" class="form-control" id="DOC_CONTENIDOACT" name="DOC_CONTENIDOACT" value="">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>CODIGO ACTUAL</label>
+                            <input type="text" class="form-control" id="DOC_CODIGOACT" name="DOC_CODIGOACT" value="" disabled>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>TIPO DOC</label>
+                            <select class="form-control" name="DOC_ID_TIPOACT" id="DOC_ID_TIPOACT">
+                                <option value=""selected>Seleccione</option>
+                                <?php foreach($data['tipoDoc'] as $tipoDoc):?>
+                                    <option value="<?php echo $tipoDoc['TIP_ID']; ?>" data-prefix="<?php echo $tipoDoc['TIP_PREFIJO'];?>"><?php echo $tipoDoc['TIP_PREFIJO'];?> - <?php echo $tipoDoc['TIP_NOMBRE'];?></option>
+                                    <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>DOC PROCESO</label>
+                            <select class="form-control" name="DOC_ID_PROCESOACT" id="DOC_ID_PROCESOACT" disabled>
+                                <option selected>Seleccione</option>
+                                <?php foreach($data['proceso'] as $proceso):?>
+                                    <option value="<?php echo $proceso['PRO_ID']; ?>" data-prefix="<?php echo $proceso['PRO_PREFIJO'];?>"><?php echo $proceso['PRO_PREFIJO'];?> - <?php echo $proceso['PRO_NOMBRE'];?></option>
+                                    <?php endforeach; ?>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label>CODIGO ACTUALIZAR</label>
+                            <input type="text" class="form-control" id="DOC_CODIGONU" name="DOC_CODIGONU" value="" disabled>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-success" id="actualizarBtn">Actualizar registro</button>
+                    <button type="button" class="btn btn-secondary" id="cancelarBtnAct">Cancelar</button>
                 </form>
             </div>
             

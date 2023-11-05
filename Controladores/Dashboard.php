@@ -59,5 +59,41 @@ class Dashboard extends Controlador{
         echo json_encode($data,JSON_UNESCAPED_UNICODE);
     }
 
+    public function eliminar(){
+        $array = [];
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $id = $_POST['data'];
+
+            $data = [
+                'DOC_ID' => $id
+            ];
+
+            $idDelete = DashboardModelo::delete('DOC_DOCUMENTO',$data);
+            if($idDelete == 1){
+                $data = ['status' => true, 'msg' => 'Se ha eliminado el registro.']; 
+            }
+        }
+        echo json_encode($data,JSON_UNESCAPED_UNICODE);
+    }
+
+    public function buscarDocumento(){
+        $array = [];
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $id = $_POST['data'];
+            
+            $dataDoc = DashboardModelo::buscarDocumento($id);
+            
+            $data = $dataDoc[0];
+            
+        }
+        echo json_encode($data,JSON_UNESCAPED_UNICODE);
+    }
+
+    public function actualizarDocumento(){
+        $array = [];
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            print_r($_POST);
+        }
+    }
     
 }
